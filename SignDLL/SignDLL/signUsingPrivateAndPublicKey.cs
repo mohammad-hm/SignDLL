@@ -1,13 +1,16 @@
 ﻿using System;
-using System.IO;
-using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SignDLL
 {
-    public class SignDll
+    public class signUsingPrivateAndPublicKey
     {
-
+        // Replace the following private key with your actual private key
+        private static string privateKey = "";
         public static void SignFile(string filePath, string signatureFilePath)
         {
             try
@@ -22,45 +25,33 @@ namespace SignDLL
                 // Calculate the hash
                 byte[] hash = alg.ComputeHash(data);
 
-                byte[] publicOnlyKey;
-
                 byte[] signedHash;
 
-                // Generate a signature
                 using (RSA rsa = RSA.Create())
                 {
-                    // Get the public key parameters
-                    publicOnlyKey = rsa.ExportRSAPublicKey();
-                    var pub = Convert.ToBase64String(publicOnlyKey);
+                    // Import the private key
+                    rsa.ImportRSAPrivateKey(Convert.FromBase64String(privateKey), out _);
 
                     // create signature
-                    RSAPKCS1SignatureFormatter rsaFormatter = new ();
+                    RSAPKCS1SignatureFormatter rsaFormatter = new RSAPKCS1SignatureFormatter(rsa);
                     rsaFormatter.SetHashAlgorithm(nameof(SHA256));
 
                     // create signature
                     signedHash = rsaFormatter.CreateSignature(hash);
 
-                    // Save the public key to a file
-                    File.WriteAllText($"{signatureFilePath}\\PublicKey.pubkey", pub);
-
-
                     // Save the signature to a file
-                    File.WriteAllBytes($"{signatureFilePath}\\hajisig.hajisig", signedHash);
+                    File.WriteAllBytes($"{signatureFilePath}\\file.file", signedHash);
 
                     // Save the DLL file with the ".conf" extension
-                    File.WriteAllBytes("C:\\Users\\mhm\\Documents\\GitHub\\SignDLL\\SignDLL\\SignDLL\\bin\\Debug\\net6.0\\haji.hajiconf", data);
+                    File.WriteAllBytes(filePath, data);
 
                     Console.WriteLine("File successfully signed.");
                 }
-
-              
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
-
-       
     }
 }
