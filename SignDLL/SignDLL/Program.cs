@@ -20,16 +20,16 @@ namespace SignDll
             //Console.WriteLine("Written by mohammad hajimohammadi");
 
             // use for sign dll file using your own private key
-            //Console.WriteLine("start Signing the file");
-            //Console.WriteLine("Enter the file path");
-            //var filePath = Console.ReadLine();
-            //Console.WriteLine("Enter the path for saving  signature");
-            //var sigPath = Console.ReadLine();
-            //if (filePath != null && sigPath != null)
-            //{
+            // Console.WriteLine("start Signing the file");
+            // Console.WriteLine("Enter the file path");
+            // var filePath = Console.ReadLine();
+            // Console.WriteLine("Enter the path for saving  signature");
+            // var sigPath = Console.ReadLine();
+            // if (filePath != null && sigPath != null)
+            // {
             //    signUsingPrivateAndPublicKey.SignFile(filePath, sigPath); // Call the SignFile method from the signUsingPrivateAndPublicKey class
-            //}
-            //Console.WriteLine("Written by mohammad hajimohammadi");
+            // }
+            // Console.WriteLine("Written by mohammad hajimohammadi");
 
             // use for verifying dll file
             //Console.WriteLine("start Verifying the file");
@@ -59,10 +59,10 @@ namespace SignDll
             Console.WriteLine("Written by mohammad hajimohammadi");
 
             // use for creating a private and public key using RSA
-            //Console.WriteLine("start creating private and public key");
-            //Console.WriteLine("Enter the path for savings keys");
-            //Creating.CreatingPrivateAndPublicKey(); // Call the CreatingPrivateAndPublickey method from the Creating class
-            //Console.WriteLine("Written by mohammad hajimohammadi");
+            // Console.WriteLine("start creating private and public key");
+            // Console.WriteLine("Enter the path for savings keys");
+            // Creating.CreatingPrivateAndPublicKey(); // Call the CreatingPrivateAndPublickey method from the Creating class
+            // Console.WriteLine("Written by mohammad hajimohammadi");
         }
     }
 }
